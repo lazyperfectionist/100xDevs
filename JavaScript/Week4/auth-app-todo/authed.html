@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="authedscript.js"></script>
+</head>
+
+<body>
+    <h1>You are authorised to view this page : :::: </h1>
+    <label for="title">Enter Title</label>
+    <input type="text" name="" id="title" placeholder="enter title" required> <br><br>
+    <label for="desc">Enter Desc</label>
+    <input type="text" name="" id="desc" placeholder="enter desc" required> <br><br>
+
+    <button onclick="addTodo()">Add todo</button>
+
+    <div id="container"></div>
+    <script>
+        let globalId = 1;
+
+        function addTodo() {
+            const title = document.getElementById('title').value;
+            const desc = document.getElementById('desc').value;
+
+            document.getElementById('container').appendChild(createChild(title, desc,globalId++));
+            // document.getElementById('container').innerHTML = 'HI'
+        }
+        function createChild(title, desc,id) {
+            const child = document.createElement('div');
+
+            const child1 = document.createElement('div');
+            child1.innerHTML = title;
+
+            const child2 = document.createElement('div');
+            child2.innerHTML = desc;
+
+            const child3 = document.createElement('button');
+            child3.setAttribute('onclick',`markAsDone(${id})`)
+            child3.innerHTML = 'Mark as Done!!! ';
+
+            child.appendChild(child1);
+            child.appendChild(child2);
+            child.appendChild(child3);
+            child.setAttribute('id',id);
+
+            console.log(child);
+            return child;
+        }
+        function markAsDone(todoId){
+            const parent = document.getElementById(todoId);
+            parent.children[2].innerHTML = "Done ho gya bkl !!!!!" 
+        }
+    </script>
+</body>
+
+</html>
