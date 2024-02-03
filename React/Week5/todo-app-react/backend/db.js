@@ -1,8 +1,9 @@
 const mongoose = require("mongoose")
 
-dburl = ""
-mongoose.connect(url);
-
+dburl = "mongodb+srv://admin:HckSY0ASvwNSRVab@cluster0.sywpqzt.mongodb.net/ReactTodoDB"
+mongoose.connect(dburl).then(()=>{
+    console.log("Db Connected !!");
+})
 
 const todoSchema = mongoose.Schema({
     title:String,
