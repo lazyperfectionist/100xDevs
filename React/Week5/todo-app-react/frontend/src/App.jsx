@@ -12,7 +12,7 @@ function App() {
       const json = await res.json();
       setTodos(json.todos)
     })
-  }, 2000)
+  }, 5000)
 
   return (
     <div>
